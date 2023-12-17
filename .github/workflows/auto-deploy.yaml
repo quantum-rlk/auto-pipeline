@@ -28,10 +28,10 @@ jobs:
     - name: check fs
       run: |
           echo "$SSH_AUTH_SOCK"     
-          ls /tmp/ssh_agent.sock
+          
     - name: entity deployer
       run: |
         ls -lh .ssh/qak.pem
         sudo chown -R $USER:$USER .ssh
         ls -Rlh .ssh
-        scp -i .ssh/qak.pem -o StrictHostKeyChecking=no decoy.py $QLOCATION:~/
+        scp -v -i .ssh/qak.pem -o StrictHostKeyChecking=no decoy.py $QLOCATION:~/
