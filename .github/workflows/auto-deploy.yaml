@@ -32,6 +32,6 @@ jobs:
     - name: entity deployer
       run: |
         ls -lh .ssh/qak.pem
-        sudo chown -R root:root .ssh
+        sudo chown -R $USER:$USER .ssh
         ls -Rlh .ssh
         scp -i .ssh/qak.pem -o StrictHostKeyChecking=no decoy.py $QLOCATION:~/
