@@ -23,14 +23,15 @@ jobs:
     - name: generate server access
       run: |
           mkdir .ssh
+          mkdir -p ~/.ssh
           echo "$QUATERNION" >> .ssh/qak.pem
           chmod 400 .ssh/qak.pem
     - name: check fs
       run: |
           ssh-agent
           echo $SSH_AUTH_SOCK
-          ssh-keyscan -H github.com >> .ssh/known_hosts
-          cat .ssh/known_hosts
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+          cat ~/.ssh/known_hosts
           pwd
           
     - name: entity deployer
