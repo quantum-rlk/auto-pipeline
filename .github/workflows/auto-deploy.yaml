@@ -29,7 +29,7 @@ jobs:
           echo "$QUATERNION" >> .ssh/qak.pem
           echo "$QUATERNION" >> ~/.ssh/identity
           chmod 400 .ssh/qak.pem
-          ls -lh /.dockerenv
+          find / -iname .docker*
           
     - name: check fs
       run: |
@@ -37,7 +37,6 @@ jobs:
           eval `ssh-agent -s`
           ssh-add
           ssh-add -l
-          find / -iname .docker*
           '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
           ssh-keyscan -H github.com >> ~/.ssh/known_hosts          
           cat ~/.ssh/known_hosts
