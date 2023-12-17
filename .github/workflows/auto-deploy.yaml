@@ -29,6 +29,6 @@ jobs:
       run: |
         ls -lh $HOME/qak.pem
         echo $USER
-        sudo chown docker:docker $HOME/qak.pem
+        sudo chown root:root $HOME/qak.pem
         ls -lh $HOME/qak.pem   
         scp -i $HOME/qak.pem -o StrictHostKeyChecking=no decoy.py $QLOCATION:~/
