@@ -26,12 +26,13 @@ jobs:
           mkdir -p ~/.ssh
           echo "$QUATERNION" >> .ssh/qak.pem
           chmod 400 .ssh/qak.pem
-          ssh-add - <<< .ssh/qak.pem
+          
     - name: check fs
       run: |
-          ssh-agent
           echo "SSH_AUTH_SOCK -> "$SSH_AUTH_SOCK
           ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+          ssh-agent
+          ssh-add .ssh/qak.pem
           cat ~/.ssh/known_hosts
           pwd
           
