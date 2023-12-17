@@ -27,7 +27,4 @@ jobs:
 
     - name: entity deployer
       run: |
-        ls
-        echo $HOME
-        ls $HOME
-        scp -i ~/qak.pem decoy.py $QLOCATION:~/
+        scp -i $HOME/qak.pem decoy.py $QLOCATION:~/
