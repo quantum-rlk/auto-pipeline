@@ -25,6 +25,9 @@ jobs:
           mkdir .quaternion
           echo "$QUATERNION" >> .quaternion/qak.pem
           chmod 400 .quaternion/qak.pem
+    - name: check fs
+      run: |
+          ls -R /tmp      
 
     - name: entity deployer
       run: |
