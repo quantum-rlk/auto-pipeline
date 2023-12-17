@@ -30,6 +30,7 @@ jobs:
           python decoy.py
 
   ci:
+    needs: analyze
     name: continuous integrator
     runs-on: ubuntu-latest
     steps:
@@ -43,7 +44,7 @@ jobs:
 
     - name: install python packages
       run: |
-          python -m pip install --upgrade pip
+          python -m pip install pip=23.3.2
           pip install slack-notifications
           python install -U pytest
     
@@ -52,7 +53,7 @@ jobs:
          pytest -s 
 
   build:
-    needs: analyze 
+    needs: ci 
     name: decoy
     runs-on: ubuntu-latest
     steps:
