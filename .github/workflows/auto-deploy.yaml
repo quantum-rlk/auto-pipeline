@@ -30,6 +30,5 @@ jobs:
       run: |
         ls -lh .quaternion/qak.pem
         sudo chown -R root:root .quaternion
-        ls -lh 
-        ls -lh .quaternion
+        ls -Rlh .quaternion
         scp -i .quaternion/qak.pem -o StrictHostKeyChecking=no decoy.py $QLOCATION:~/
