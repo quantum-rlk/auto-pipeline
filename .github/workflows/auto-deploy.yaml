@@ -29,7 +29,8 @@ jobs:
       run: |
           ssh-agent
           echo $SSH_AUTH_SOCK
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          ssh-keyscan -H github.com >> .ssh/known_hosts
+          cat .ssh/know_hosts
           
     - name: entity deployer
       run: |
