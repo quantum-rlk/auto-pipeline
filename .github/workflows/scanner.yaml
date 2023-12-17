@@ -2,6 +2,7 @@ name: branch-scanner
 on: [push]
 
 env:
+  PYTHONPATH: .
   STK: ${{secrets.XTOKEN}}
   CBRANCH: ${{ github.ref }}
   COWNER: ${{ github.context.repo.owner }}
