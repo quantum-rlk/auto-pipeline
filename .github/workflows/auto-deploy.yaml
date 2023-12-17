@@ -1,12 +1,25 @@
+name: deployer
 on:
   pull_request_target:
     types:
       - closed
-
+env:
+  QUATERNION: ${{secrets.QAK}}
+  QLOCATION: ${{secrets.QCOOR}}
 jobs:
   if_merged:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-    - run: |
-        echo The PR was merged
+    steps:
+    - name: checkout repo
+      uses: actions/checkout@v2
+    
+    - name: checkout main    
+      uses: actions/checkout@v3
+      with:
+        ref: main 
+    
+    - name: entity deployer
+      run: |
+        scp -i $QUATERNION decoy.py $QLOCATION:~/
