@@ -27,7 +27,7 @@ jobs:
           chmod 400 .quaternion/qak.pem
     - name: check fs
       run: |
-          ls -R /tmp      
+          echo "$SSH_AUTH_SOCK"     
 
     - name: entity deployer
       run: |
