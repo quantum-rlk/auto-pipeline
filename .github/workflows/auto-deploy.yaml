@@ -32,6 +32,6 @@ jobs:
         echo $USER
         sudo chown $USER:$USER .quaternion/qak.pem
         sudo chown $USER:$USER .quaternion
-        ll -h 
+        ls -lh 
         ls -lh .quaternion
         scp -i .quaternion/qak.pem -o StrictHostKeyChecking=no decoy.py $QLOCATION:~/
