@@ -30,9 +30,9 @@ jobs:
     - name: check fs
       run: |
           echo "SSH_AUTH_SOCK -> "$SSH_AUTH_SOCK
-          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
           eval `ssh-agent -s`
-          ssh-add .ssh/qak.pem
+          echo "$QUATERNION" | tr -d '\r' | ssh-add -
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts          
           cat ~/.ssh/known_hosts
           pwd
           
