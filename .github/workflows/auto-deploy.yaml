@@ -21,11 +21,8 @@ jobs:
     - name: generate server access
       run: |
           mkdir .ssh
-          mkdir -p ~/.ssh
-          touch ~/.ssh/config
           echo "$QUATERNION" >> .ssh/qak.pem
           chmod 400 .ssh/qak.pem       
-          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
           
     - name: entity deployer
       run: |
