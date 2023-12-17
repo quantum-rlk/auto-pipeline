@@ -29,6 +29,28 @@ jobs:
       run: |
           python decoy.py
 
+  ci:
+    name: continuous integrator
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout repo
+      uses: actions/checkout@v2
+   
+    - name: setup python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10' # install the python version needed
+
+    - name: install python packages
+      run: |
+          python -m pip install --upgrade pip
+          pip install slack-notifications
+          python install -U pytest
+    
+    - name: launch decoy
+      run: |
+         pytest -s 
+
   build:
     needs: analyze 
     name: decoy
