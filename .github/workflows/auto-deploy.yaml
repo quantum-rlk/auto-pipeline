@@ -28,7 +28,7 @@ jobs:
     - name: check fs
       run: |
           ssh-agent
-          echo "$SSH_AUTH_SOCK"
+          echo $SSH_AUTH_SOCK
           ssh-keyscan github.com >> ~/.ssh/known_hosts
           
     - name: entity deployer
