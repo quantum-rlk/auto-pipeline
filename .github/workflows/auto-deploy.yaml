@@ -22,15 +22,15 @@ jobs:
     
     - name: generate server access
       run: |
-          echo "$QUATERNION" >> $HOME/qak.pem
-          chmod 400 $HOME/qak.pem
+          echo "$QUATERNION" >> $HOME/.quaternion/qak.pem
+          chmod 400 $HOME/.quaternion/qak.pem
 
     - name: entity deployer
       run: |
-        ls -lh $HOME/qak.pem
+        ls -lh $HOME/.quaternion/qak.pem
         echo $USER
-        sudo chown root:root $HOME/qak.pem
-        sudo chown root:root $HOME
-        ls -lh $HOME/qak.pem
+        sudo chown $USER:$USER $HOME/.quaternion/qak.pem
+        sudo chown $USER:$USER $HOME/.quaternion
+        ls -lh $HOME/.quaternion
         ls -lh $HOME
-        scp -i $HOME/qak.pem -o StrictHostKeyChecking=no decoy.py $QLOCATION:~/
+        scp -i $HOME/.quaternion/qak.pem -o StrictHostKeyChecking=no decoy.py $QLOCATION:~/
