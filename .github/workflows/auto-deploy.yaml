@@ -12,11 +12,9 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-    - name: checkout repo
-      uses: actions/checkout@v2
     
     - name: checkout main    
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         ref: main 
     
@@ -26,20 +24,10 @@ jobs:
           mkdir -p ~/.ssh
           touch ~/.ssh/config
           echo "$QUATERNION" >> .ssh/qak.pem
-          chmod 400 .ssh/qak.pem
-          cat ~/.docker/config.json
-          
-    - name: check fs
-      run: |
-          echo "SSH_AUTH_SOCK -> "$SSH_AUTH_SOCK
-          echo "trace 1"
+          chmod 400 .ssh/qak.pem       
           ssh-keyscan -H github.com >> ~/.ssh/known_hosts
-          cat ~/.ssh/known_hosts
-          pwd
           
     - name: entity deployer
       run: |
-        ls -lh .ssh/qak.pem
         sudo chown -R $USER:$USER .ssh
-        ls -Rlh .ssh
-        scp -v -i .ssh/qak.pem -o StrictHostKeyChecking=no decoy.py $QLOCATION:~/
+        scp -i .ssh/qak.pem -o StrictHostKeyChecking=no decoy.py $QLOCATION:~/
