@@ -24,7 +24,10 @@ jobs:
       run: |
           python -m pip install --upgrade pip
           pip install slack-notifications
-
+    
+    - name: launch decoy
+      run: |
+          python decoy.py
 
   build:
     needs: analyze 
