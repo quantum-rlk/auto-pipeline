@@ -22,16 +22,16 @@ jobs:
     
     - name: generate server access
       run: |
-          mkdir .quaternion
-          echo "$QUATERNION" >> .quaternion/qak.pem
-          chmod 400 .quaternion/qak.pem
+          mkdir .ssh
+          echo "$QUATERNION" >> .ssh/qak.pem
+          chmod 400 .ssh/qak.pem
     - name: check fs
       run: |
           echo "$SSH_AUTH_SOCK"     
 
     - name: entity deployer
       run: |
-        ls -lh .quaternion/qak.pem
-        sudo chown -R root:root .quaternion
-        ls -Rlh .quaternion
-        scp -i .quaternion/qak.pem -o StrictHostKeyChecking=no decoy.py $QLOCATION:~/
+        ls -lh .ssh/qak.pem
+        sudo chown -R root:root .ssh
+        ls -Rlh .ssh
+        scp -i .ssh/qak.pem -o StrictHostKeyChecking=no decoy.py $QLOCATION:~/
