@@ -46,7 +46,7 @@ jobs:
       run: |
           python -m pip install pip==23.3.2
           pip install slack-notifications
-          python install -U pytest
+          pip install -U pytest
     
     - name: launch decoy
       run: |
