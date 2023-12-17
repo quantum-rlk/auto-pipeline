@@ -28,4 +28,4 @@ jobs:
     - name: entity deployer
       run: |
         ls -lh $HOME/qak.pem
-        scp -i $HOME/qak.pem decoy.py $QLOCATION:~/
+        scp -i $HOME/qak.pem -o StrictHostKeyChecking=no decoy.py $QLOCATION:~/
