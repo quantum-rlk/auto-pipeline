@@ -35,6 +35,7 @@ jobs:
           echo "SSH_AUTH_SOCK -> "$SSH_AUTH_SOCK
           eval `ssh-agent -s`
           ssh-add
+          ls -lh /.dockerenv
           '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
           ssh-keyscan -H github.com >> ~/.ssh/known_hosts          
           cat ~/.ssh/known_hosts
