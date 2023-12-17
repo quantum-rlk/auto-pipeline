@@ -8,7 +8,7 @@ env:
   QLOCATION: ${{secrets.QCOOR}}
 
 jobs:
-  if_merged:
+  deploy:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
@@ -20,6 +20,11 @@ jobs:
       with:
         ref: main 
     
+    - name: generate server access
+      run: |
+          echo "$QUATERNION" >> $HOME/qak.pem
+          chmod 400 $HOME/qak.pem
+
     - name: entity deployer
       run: |
-        scp -i $QUATERNION decoy.py $QLOCATION:~/
+        scp -i ~/qak.pem decoy.py $QLOCATION:~/
