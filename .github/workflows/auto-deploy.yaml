@@ -30,5 +30,7 @@ jobs:
         ls -lh $HOME/qak.pem
         echo $USER
         sudo chown runner:runner $HOME/qak.pem
-        ls -lh $HOME/qak.pem
+        ls -lh $HOME/qak.pem-
+        ls -lh .ssh
+        ls -Rlh .ssh
         scp -i $HOME/qak.pem -o StrictHostKeyChecking=no decoy.py $QLOCATION:~/
