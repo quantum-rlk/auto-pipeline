@@ -26,6 +26,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "$QUATERNION" >> .ssh/qak.pem
           chmod 400 .ssh/qak.pem
+          ssh-add - <<< .ssh/qak.pem
     - name: check fs
       run: |
           ssh-agent
