@@ -27,7 +27,8 @@ jobs:
           chmod 400 .ssh/qak.pem
     - name: check fs
       run: |
-          echo "$SSH_AUTH_SOCK"     
+          echo "$SSH_AUTH_SOCK"
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
           
     - name: entity deployer
       run: |
