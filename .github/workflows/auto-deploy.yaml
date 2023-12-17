@@ -28,7 +28,7 @@ jobs:
     - name: check fs
       run: |
           echo "$SSH_AUTH_SOCK"     
-
+          ls /tmp/ssh_agent.sock
     - name: entity deployer
       run: |
         ls -lh .ssh/qak.pem
