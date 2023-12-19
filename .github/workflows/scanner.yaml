@@ -7,6 +7,8 @@ env:
   CBRANCH: ${{ github.ref }}
   COWNER: ${{ github.context.repo.owner }}
   CREPO: ${{ github.context.repo.repo }}
+  AWS-ID: ${{secrets.AWSID}}
+  AWS-AK: ${{secrets.AWSAK}}
 
 jobs:
   analyze:
@@ -48,7 +50,14 @@ jobs:
           python -m pip install pip==23.3.2
           pip install slack-notifications
           pip install -U pytest
-    
+
+    - name: Configure AWS Credentials 
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-region: eu-north-1 
+        aws-access-key-id: ${{AWS-ID}}
+        aws-secret-access-key: ${{AWS-AK}}
+        
     - name: launch decoy
       run: |
          pytest -s 
