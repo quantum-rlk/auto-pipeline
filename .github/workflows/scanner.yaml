@@ -50,6 +50,7 @@ jobs:
           python -m pip install pip==23.3.2
           pip install slack-notifications
           pip install -U pytest
+          pip install boto
 
     - name: Configure AWS Credentials 
       uses: aws-actions/configure-aws-credentials@v4
